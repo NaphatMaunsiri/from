@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+
+</head>
+
+<body>
+    <div id="sum">
+        <form action="">
+            <p>ชื่อ</p>
+            <input type="text" v-model="student.name">
+            <p>นามสกุล</p>
+            <input type="text" v-model="student.lastname">
+            <p>รหัสนักศึกษา</p>
+            <input type="text" v-model="student.id">
+            <p>Email</p>
+            <input type="text" v-model="student.email">
+            <p>GPA</p>
+            <input type="text" v-model="student.gpa">
+
+        </form>
+        <div class="data">
+            <div class="btn">
+                <button @click="Add()">Submit</button>
+            </div>
+            <table border="1">
+                <tr>
+                    <th>ชื่อ</th>
+                    <th>นามสกุล</th>
+                    <th>รหัสนักศึกษา</th>
+                    <th>Email</th>
+                    <th>GPA</th>
+                    <th>Delete</th>
+                </tr>
+                <tr v-for="(item ,index) in students" v-if="item.gpa<2.00" :style="{color:'red','font-weight':'bold'}">
+                    <td>{{item.name}}</td>
+                    <td>{{item.lastname}}</td>
+                    <td>{{item.id}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.gpa}}</td>
+                    <td><button @click="DeleteS(index)">delete</button></td>
+                </tr>
+                <tr v-for="(item ,index) in students" v-if="item.gpa>2.00">
+                    <td>{{item.name}}</td>
+                    <td>{{item.lastname}}</td>
+                    <td>{{item.id}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.gpa}}</td>
+                    <td><button @click="DeleteS(index)">delete</button></td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</body>
+<script src="jv.js"></script>
+
+</html>
